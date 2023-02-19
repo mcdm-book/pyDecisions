@@ -79,6 +79,6 @@ def vikor_method(dataset, weights, criterion_type, strategy_coefficient = 0.5, g
         print('a' + str(i+1) + ': ' + str(round(solution[i, 0], 2)))
     if ( graph == True):
         ranking(solution) 
-    return flow_s, flow_r, flow_q, solution
+    return best, worst, s_i, r_i, flow_s, flow_r, flow_q, solution
 
 ###############################################################################
