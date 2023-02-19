@@ -29,13 +29,14 @@ def ranking(flow):
     return
 
 # Function: TOPSIS
-def topsis_method(dataset, weights, criterion_type, graph = True):
+
+def topsis_method(dataset, weights, criterion_type, graph=True):
     X = np.copy(dataset)
     w = np.copy(weights)
-    sum_cols = np.sum(X*X, axis = 0)
-    sum_cols = sum_cols**(1/2)
-    r_ij = X/sum_cols
-    v_ij = r_ij*w
+    sum_cols = np.sum(X * X, axis=0)
+    sum_cols = sum_cols ** (1 / 2)
+    r_ij = X / sum_cols
+    v_ij = r_ij * w
     p_ideal_A = np.zeros(X.shape[1])
     n_ideal_A = np.zeros(X.shape[1])
     for i in range(0, dataset.shape[1]):
@@ -44,21 +45,23 @@ def topsis_method(dataset, weights, criterion_type, graph = True):
             n_ideal_A[i] = np.min(v_ij[:, i])
         else:
             p_ideal_A[i] = np.min(v_ij[:, i])
-            n_ideal_A[i] = np.max(v_ij[:, i]) 
-    p_s_ij = (v_ij - p_ideal_A)**2
-    p_s_ij = np.sum(p_s_ij, axis = 1)**(1/2)
-    n_s_ij = (v_ij - n_ideal_A)**2
-    n_s_ij = np.sum(n_s_ij, axis = 1)**(1/2)
-    c_i    = n_s_ij / ( p_s_ij  + n_s_ij )
-    for i in range(0, c_i.shape[0]):
-        print('a' + str(i+1) + ': ' + str(round(c_i[i], 2)))
-    if ( graph == True):
+            n_ideal_A[i] = np.max(v_ij[:, i])
+
+    p_s_ij = (v_ij - p_ideal_A) ** 2
+    p_s_ij = np.sum(p_s_ij, axis=1) ** (1 / 2)
+    n_s_ij = (v_ij - n_ideal_A) ** 2
+    n_s_ij = np.sum(n_s_ij, axis=1) ** (1 / 2)
+
+    c_i = n_s_ij / (p_s_ij + n_s_ij)
+    # for i in range(0, c_i.shape[0]):
+    #    print('a' + str(i+1) + ': ' + str(round(c_i[i], 2)))
+    if (graph == True):
         flow = np.copy(c_i)
         flow = np.reshape(flow, (c_i.shape[0], 1))
-        flow = np.insert(flow, 0, list(range(1, c_i.shape[0]+1)), axis = 1)
+        flow = np.insert(flow, 0, list(range(1, c_i.shape[0] + 1)), axis=1)
         flow = flow[np.argsort(flow[:, 1])]
         flow = flow[::-1]
-        ranking(flow)
-    return c_i
+        # ranking(flow)
+    return r_ij, p_s_ij, n_s_ij, c_i
 
 ###############################################################################
