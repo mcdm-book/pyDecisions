@@ -115,6 +115,6 @@ def promethee_ii(dataset, W, Q, S, P, F, sort = True, topn = 0, graph = False):
             print('a' + str(int(flow[i,0])) + ': ' + str(round(flow[i,1], 3))) 
     if (graph == True):
         ranking(flow)
-    return flow
+    return pd_matrix, flow_plus, flow_minus, flow
 
 ###############################################################################
