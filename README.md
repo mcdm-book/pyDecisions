@@ -1,6 +1,6 @@
-# MCDM Book Applications
+# Applications for Adressing The Weaknesses of Multi-Criteria Decision-Making Methods Using Python 
 
-This repository contains adjusted versions of Python functions of PyDecisions library for MCDM Book. If you would like to reproduce the results presented in Chapter 4.3, please open Colab notebooks mentioned below.
+This repository contains adjusted versions of Python functions of PyDecisions library for book titled Adressing The Weaknesses of Multi-Criteria Decision-Making Methods Using Python. If you would like to reproduce the results presented in Chapter 4.3, please open Colab notebooks mentioned below.
 
 
 
