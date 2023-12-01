@@ -61,7 +61,7 @@ def topsis_method(dataset, weights, criterion_type, graph=True):
         flow = np.insert(flow, 0, list(range(1, c_i.shape[0] + 1)), axis=1)
         flow = flow[np.argsort(flow[:, 1])]
         flow = flow[::-1]
-        # ranking(flow)
+        ranking(flow)
     return r_ij, p_s_ij, n_s_ij, c_i
 
 ###############################################################################
