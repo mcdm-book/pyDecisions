@@ -81,7 +81,6 @@ def destilation_descending(credibility):
                 index_tie       = np.where(qual == np.amax(qual))[0]
                 credibility_tie = credibility_tie[index_tie[:, None], index_tie] 
                 qual_tie        = qualification(credibility_tie)   
-                print(qual_tie)
                 for i in range(index.shape[0]-1, -1, -1):
                     if (np.isin(i, index_tie) == False):
                         index = np.delete(index, i, axis = 0)
@@ -114,12 +113,10 @@ def destilation_ascending(credibility):
     rank = []
     while len(alts) > 0:
         qual = qualification(credibility)
-        print(qual)
         if (np.where(qual == np.amin(qual))[0].shape[0] > 1):
             index           = np.where(qual == np.amin(qual))[0]
             credibility_tie = credibility[index[:, None], index] 
             qual_tie        = qualification(credibility_tie)
-            print(qual_tie)
             while (np.where(qual_tie == np.amin(qual_tie))[0].shape[0] > 1 and np.where(qual_tie == np.amin(qual_tie))[0].shape[0] < np.where(qual == np.amin(qual))[0].shape[0]):
                 qual            = qualification(credibility_tie)
                 index_tie       = np.where(qual == np.amin(qual))[0]
