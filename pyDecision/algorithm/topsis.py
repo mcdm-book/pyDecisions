@@ -30,7 +30,7 @@ def ranking(flow):
 
 # Function: TOPSIS
 
-def topsis_method(dataset, weights, criterion_type, graph=True):
+def topsis_method(dataset, weights, criterion_type, graph=True, verbose = True):
     X = np.copy(dataset)
     w = np.copy(weights)
     sum_cols = np.sum(X * X, axis=0)
