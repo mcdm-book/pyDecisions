@@ -53,8 +53,10 @@ def topsis_method(dataset, weights, criterion_type, graph=True, verbose = True):
     n_s_ij = np.sum(n_s_ij, axis=1) ** (1 / 2)
 
     c_i = n_s_ij / (p_s_ij + n_s_ij)
-    # for i in range(0, c_i.shape[0]):
-    #    print('a' + str(i+1) + ': ' + str(round(c_i[i], 2)))
+    
+    if (verbose == True):
+        for i in range(0, c_i.shape[0]):
+            print('a' + str(i+1) + ': ' + str(round(c_i[i], 2)))
     if (graph == True):
         flow = np.copy(c_i)
         flow = np.reshape(flow, (c_i.shape[0], 1))
