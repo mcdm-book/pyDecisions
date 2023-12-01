@@ -32,7 +32,7 @@ def ranking(flow):
 # Function: TOPSIS modified
 
 def topsis_method_modified(dataset, weights, criterion_type, graph=True):
-    X = np.copy(df_array)
+    X = np.copy(dataset)
     w = np.copy(weights)
     sum_cols = np.sum(X * X, axis=0)
     sum_cols = sum_cols ** (1 / 2)
